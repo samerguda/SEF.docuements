@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الوظائف والنسخ السريع</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            background-color: #34495e;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .priority-box {
+            background-color: #eef9f5;
+            border-right: 5px solid #2ecc71;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .job-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .job-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .copy-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            background-color: #2ecc71;
+        }
+
+        /* Toast Alert */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #2ecc71;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.3s, fadeout 0.3s 1.7s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>دليل الوظائف والفرص</h1>
+
+    <div class="priority-box">
+        <strong>⭐ الأولوية لك:</strong><br>
+        <span style="direction: ltr; display: inline-block; margin-top: 5px;">
+            Engineer → Technical/Office → Computer → Logistics → Warehouse/Production → Cleaning
+        </span>
+    </div>
+
+    <!-- أفضل 5 مؤقتاً -->
+    <div class="section-title" style="background-color: #27ae60;">🔥 أفضل 5 مؤقتًا لك</div>
+    <ul class="job-list">
+        <li class="job-item"><span class="job-title">Document Controller</span><button class="copy-btn" onclick="copyText('Document Controller', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Technical Administrator</span><button class="copy-btn" onclick="copyText('Technical Administrator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Planning Assistant</span><button class="copy-btn" onclick="copyText('Planning Assistant', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">IT Support</span><button class="copy-btn" onclick="copyText('IT Support', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Data Entry</span><button class="copy-btn" onclick="copyText('Data Entry', this)">نسخ</button></li>
+    </ul>
+
+    <!-- 1. وظائف مهندس -->
+    <div class="section-title">🎯 1. وظائف مهندس — الهدف الأساسي</div>
+    <ul class="job-list">
+        <li class="job-item"><span class="job-title">Mechanical Engineer</span><button class="copy-btn" onclick="copyText('Mechanical Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">HVAC Engineer</span><button class="copy-btn" onclick="copyText('HVAC Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">MEP Engineer</span><button class="copy-btn" onclick="copyText('MEP Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Project Engineer</span><button class="copy-btn" onclick="copyText('Project Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Site Engineer</span><button class="copy-btn" onclick="copyText('Site Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Mechanical Coordinator</span><button class="copy-btn" onclick="copyText('Mechanical Coordinator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Piping Engineer</span><button class="copy-btn" onclick="copyText('Piping Engineer', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Technical Engineer</span><button class="copy-btn" onclick="copyText('Technical Engineer', this)">نسخ</button></li>
+    </ul>
+
+    <!-- 2. وظائف كمبيوتر/مكتب -->
+    <div class="section-title">💻 2. وظائف كمبيوتر/مكتب — مؤقتة ومناسبة لك</div>
+    <ul class="job-list">
+        <li class="job-item"><span class="job-title">IT Support</span><button class="copy-btn" onclick="copyText('IT Support', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">IT Helpdesk</span><button class="copy-btn" onclick="copyText('IT Helpdesk', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Data Entry</span><button class="copy-btn" onclick="copyText('Data Entry', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Document Controller</span><button class="copy-btn" onclick="copyText('Document Controller', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Technical Administrator</span><button class="copy-btn" onclick="copyText('Technical Administrator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Planning Assistant</span><button class="copy-btn" onclick="copyText('Planning Assistant', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Project Assistant</span><button class="copy-btn" onclick="copyText('Project Assistant', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Back Office</span><button class="copy-btn" onclick="copyText('Back Office', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Administrative Assistant</span><button class="copy-btn" onclick="copyText('Administrative Assistant', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">ERP/Data Entry</span><button class="copy-btn" onclick="copyText('ERP/Data Entry', this)">نسخ</button></li>
+    </ul>
+
+    <!-- 3. وظائف قريبة من الهندسة -->
+    <div class="section-title">📋 3. وظائف قريبة من الهندسة</div>
+    <ul class="job-list">
+        <li class="job-item"><span class="job-title">Technical Coordinator</span><button class="copy-btn" onclick="copyText('Technical Coordinator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">MEP Coordinator</span><button class="copy-btn" onclick="copyText('MEP Coordinator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Maintenance Planner</span><button class="copy-btn" onclick="copyText('Maintenance Planner', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Technical Planner</span><button class="copy-btn" onclick="copyText('Technical Planner', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Project Coordinator</span><button class="copy-btn" onclick="copyText('Project Coordinator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Logistics Coordinator</span><button class="copy-btn" onclick="copyText('Logistics Coordinator', this)">نسخ</button></li>
+    </ul>
+
+    <!-- 4. شغل سهل وسريع -->
+    <div class="section-title">📦 4. شغل سهل وسريع — خارج المجال</div>
+    <ul class="job-list">
+        <li class="job-item"><span class="job-title">Packer / Inpakker</span><button class="copy-btn" onclick="copyText('Packer / Inpakker', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Production Worker</span><button class="copy-btn" onclick="copyText('Production Worker', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Warehouse / Magazijnmedewerker</span><button class="copy-btn" onclick="copyText('Warehouse / Magazijnmedewerker', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Orderpicker</span><button class="copy-btn" onclick="copyText('Orderpicker', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Production Operator</span><button class="copy-btn" onclick="copyText('Production Operator', this)">نسخ</button></li>
+        <li class="job-item"><span class="job-title">Cleaning</span><button class="copy-btn" onclick="copyText('Cleaning', this)">نسخ</button></li>
+    </ul>
+</div>
+
+<div id="toast">تم النسخ بنجاح!</div>
+
+<script>
+    function copyText(text, buttonElement) {
+        navigator.clipboard.writeText(text).then(function() {
+            // إظهار التنبيه السريع
+            var toast = document.getElementById("toast");
+            toast.innerText = 'تم نسخ: "' + text + '"';
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2000);
+
+            // تغيير لون النص للزر لفترة بسيطة
+            var originalText = buttonElement.innerText;
+            buttonElement.innerText = "تم النسخ ✓";
+            buttonElement.classList.add("copied");
+
+            setTimeout(function() {
+                buttonElement.innerText = originalText;
+                buttonElement.classList.remove("copied");
+            }, 1500);
+        }).catch(function(err) {
+            alert("حدث خطأ أثناء النسخ: " + err);
+        });
+    }
+</script>
+
+</body>
+</html>
